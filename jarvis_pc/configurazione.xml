@@ -1,0 +1,8 @@
+<?xml version="1.0"?> <!-- la codificia e' UTF-8 quindi NON scrivere caratteri accentati -->
+<!-- questo file e' usato dai file .py in machine-functions e contiene alcuni parametri di configurazione -->
+<configurazione>
+<dir_musica><desc>Cartella dove risiedono i brani musicali...</desc><val>D:\Musica</val></dir_musica>
+<dir_film><desc>Cartella dove risiedono i film...</desc><val>D:\Download-J</val></dir_film>
+
+
+</configurazione>

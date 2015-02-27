@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+<head><title>Play with light!</title>
+<script src="jquery-1.9.1.min.js"></script>
+
+<script>
+
+
+function listen(p_val){ // funzione chiamata ciclicamente, per restare in ascolto nel caso altre interfacce interagiscono con la luce, questa funzione aggiorna l'interfaccia luce.html di jarvis_server, mantenendo sincronizzata l'interfaccia grafica server.
+if (!(k == p_val)){ // solo se si riceve un comando diverso dallo stato attuale della luce, si processa. (ex. se la luce è on e riceve comando on, non entra in questo blocco)
+
+  if (p_val == "on"){
+
+	$.get("switch.php", { luce: "on" }) //il primo parametro serve per il jarvis_pc che lo interpretera localmente, il secondo per l'interfaccia luce.html su jarvis_server.
+	.done(function(data) {
+	//segue codice per switch dell'img.
+    $('#icona_luce').attr("src", "light-on.png");
+	k = p_val;
+	});}else if (p_val == "off"){
+	$.get("switch.php", { luce: "off" })
+	.done(function(data) {
+	//segue codice per switch dell'img.
+    $('#icona_luce').attr("src", "light-off.png");
+	k = p_val;
+	});
+	}
+
+
+}
+
+}
+
+
+function img_click(){ //click da interfaccia grafica sulla lampadina.
+
+
+  if (k == "on"){ //se è accesa, la spegniamo, img_click() infatti è come un toggle sull'img.
+  
+  	$.get("switch.php", { action: "spegni luce", luce: "off" }) //siccome operiamo dall'interfaccia luce.html è necessario inviare il comando, quindi usiamo action che switch.php raccoglierà per poterlo scrivere in comando.txt processato da jarvis_pc
+	.done(function(data) {
+	//segue codice per switch dell'img.
+    $('#icona_luce').attr("src", "light-off.png");
+	k = "off";
+	});
+
+	}else if (k == "off"){
+
+	$.get("switch.php", { action: "accendi luce", luce: "on" }) //il primo parametro serve per il jarvis_pc che lo interpretera localmente, il secondo per l'interfaccia luce.html su jarvis_server.
+	.done(function(data) {
+	//segue codice per switch dell'img.
+    $('#icona_luce').attr("src", "light-on.png");
+	k = "on";
+	});
+	}
+
+
+
+
+}
+
+
+function check_status(){
+$.get("luce.txt", function(data) {
+
+  listen(data); // con questa funzione richamata ciclicamente si verifica la sincronizzazione tra pagina web e attuatore.
+  
+  
+  
+  if (data == "on") {
+$('#icona_luce').attr("src", "light-on.png");
+} else if (data == "off") {
+$('#icona_luce').attr("src", "light-off.png");
+}
+  
+});
+
+}
+
+var k = "off"; //la inizializziamo a off
+var id_code = 0; //il codice per evitare l'esecuzione doppia di comandi (che si verifica nel caso sia aperta sia interfaccia jarvis_pc che interfaccia luce.html di jarvis_server)
+$(document).ready(function(){ //quando tutti gli elementi della pagina sono stati caricati.
+
+$.get("luce.txt", function(data){ window.k = data; }); //assegniamo alla variabile globale k, il valore attuale della luce.
+
+setInterval("check_status()", 1300);
+
+});
+
+
+
+
+
+</script>
+
+</head>
+<body>
+
+<center>
+<br/><br/>
+<a href="#" onclick="img_click();"><img src="light-off.png" id="icona_luce" /></a>
+
+</center>
+
+</body>
+</html>

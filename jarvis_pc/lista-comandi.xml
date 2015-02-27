@@ -1,0 +1,77 @@
+<?xml version="1.0"?> <!-- la codificia e' UTF-8 quindi NON scrivere caratteri accentati -->
+<!-- Abbinato ad ogni comando c'e' la funzione che deve essere dichiarata in moduli-funzione.php -->
+<comandi>
+
+<!-- COMANDI INTERATTIVI: cioe' il cmd vocale viene riconosciuto parzialmente con questi cmd_id, poiche' la restante parte e' variabile ex. play eminem lose yourself -->
+<!-- gestire sistema di priorita' e conflitti, ora come ora i comandi piu' in cima in questa sezione di comandi interattivi hanno piu' priorita', fare in modo che vegano eseguiti i cmd a partire dal numero di match fra parole piu alto.. -->
+
+	<!-- PLAY brano musicale -->
+<cmd_i><text>play</text><funzione>play</funzione></cmd_i>
+<cmd_i><text>riproduci</text><funzione>play</funzione></cmd_i>
+<cmd_i><text>sentiamo</text><funzione>play</funzione></cmd_i>
+<cmd_i><text>fammi sentire</text><funzione>play</funzione></cmd_i>
+
+	<!-- PLAY film -->
+<cmd_i><text>play film</text><funzione>play_movie</funzione></cmd_i> <!-- non va in conflitto con il play della musica perche lo script py rileva keyword film come 2 parametro -->
+<cmd_i><text>film</text><funzione>play_movie</funzione></cmd_i>
+<cmd_i><text>riproduci film</text><funzione>play_movie</funzione></cmd_i>
+<cmd_i><text>avvia film</text><funzione>play_movie</funzione></cmd_i>
+<cmd_i><text>metti</text><funzione>play_movie</funzione></cmd_i>
+
+	<!-- LETTURA VOCALE - text to speech - esempio: ripeti io lancio bombe a mano -->
+<cmd_i><text>ripeti dopo di me</text><funzione>dici</funzione></cmd_i>
+<cmd_i><text>ripeti</text><funzione>dici</funzione></cmd_i>
+<cmd_i><text>dici</text><funzione>dici</funzione></cmd_i>
+
+
+<!-- COMANDI CLASSICI: i comandi classici hanno meno priorita' rispetto ai comandi interattivi -->
+<!-- I comandi classici sono eseguiti se nel riconoscimento vocale appaiono per intero (anche con altre parole) -->
+
+	<!-- LUCE illuminazione ON -->
+<cmd><text>apriti luce</text><funzione>luceON</funzione></cmd>
+<cmd><text>apri luce</text><funzione>luceON</funzione></cmd>
+<cmd><text>apri la luce</text><funzione>luceON</funzione></cmd>
+<cmd><text>accendi luce</text><funzione>luceON</funzione></cmd>
+<cmd><text>illumina stanza</text><funzione>luceON</funzione></cmd>
+<cmd><text>attiva luce</text><funzione>luceON</funzione></cmd>
+<cmd><text>piu luce</text><funzione>luceON</funzione></cmd>
+<cmd><text>troppo scuro</text><funzione>luceON</funzione></cmd>
+
+	<!-- LUCE illuminazione OFF -->
+<cmd><text>meno luce</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>spegni luce</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>spegni la luce</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>chiudi luce</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>chiudi la luce</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>stop luce</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>disattiva illuminazione</text><funzione>luceOFF</funzione></cmd>
+<cmd><text>troppa luce</text><funzione>luceOFF</funzione></cmd>
+
+	<!-- Orario e Data -->
+<cmd><text>orario</text><funzione>time_ora</funzione></cmd>
+<cmd><text>che ore sono</text><funzione>time_ora</funzione></cmd>
+<cmd><text>dimmi che ore sono</text><funzione>time_ora</funzione></cmd>
+<cmd><text>data</text><funzione>time_data</funzione></cmd>
+<cmd><text>data odierna</text><funzione>time_data</funzione></cmd>
+<cmd><text>quanto abbiamo oggi</text><funzione>time_data</funzione></cmd>
+
+	<!-- IDENTIFICAZIONE -->
+<cmd><text>identificati</text><funzione>identificazione_nome</funzione></cmd>
+<cmd><text>tu chi sei</text><funzione>identificazione_nome</funzione></cmd>
+<cmd><text>chi sei</text><funzione>identificazione_nome</funzione></cmd>
+<cmd><text>come ti chiami</text><funzione>identificazione_nome</funzione></cmd>
+<cmd><text>chi ti ha creato</text><funzione>identificazione_who</funzione></cmd>
+
+    <!-- AMBIENTAZIONE -->
+<cmd><text>stop atmosfera</text><funzione>stop_atmosfera</funzione></cmd>
+<cmd><text>crea atmosfera</text><funzione>atmosfera_default</funzione></cmd>
+<cmd><text>atmosfera</text><funzione>atmosfera_default</funzione></cmd>
+<cmd><text>ambientazione</text><funzione>atmosfera_default</funzione></cmd>
+
+	<!-- SVAGO -->
+<cmd><text>bomba a mano</text><funzione>bomba_mano</funzione></cmd>
+<cmd><text>rocco</text><funzione>f_rocco</funzione></cmd>
+<cmd><text>velociraptor</text><funzione>f_velociraptor</funzione></cmd>
+
+</comandi>
+
