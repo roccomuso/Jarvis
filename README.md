@@ -1,3 +1,7 @@
+## Deprecated
+
+Deprecated in favor of https://github.com/roccomuso/iot-433mhz . Check it out!
+
 # Jarvis
 Distributed Domotic System
 
